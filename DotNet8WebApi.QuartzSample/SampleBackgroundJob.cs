@@ -1,20 +1,19 @@
 ﻿using Quartz;
 
-namespace DotNet8WebApi.QuartzSample
+namespace DotNet8WebApi.QuartzSample;
+
+public class SampleBackgroundJob : IJob
 {
-    public class SampleBackgroundJob : IJob
+    private readonly ILogger<SampleBackgroundJob> _logger;
+
+    public SampleBackgroundJob(ILogger<SampleBackgroundJob> logger)
     {
-        private readonly ILogger<SampleBackgroundJob> _logger;
+        _logger = logger;
+    }
 
-        public SampleBackgroundJob(ILogger<SampleBackgroundJob> logger)
-        {
-            _logger = logger;
-        }
-
-        public Task Execute(IJobExecutionContext context)
-        {
-            _logger.LogInformation("Hello world!");
-            return Task.CompletedTask;
-        }
+    public Task Execute(IJobExecutionContext context)
+    {
+        _logger.LogInformation("Hello world!");
+        return Task.CompletedTask;
     }
 }
