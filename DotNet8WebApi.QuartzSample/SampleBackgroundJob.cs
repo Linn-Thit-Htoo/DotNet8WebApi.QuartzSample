@@ -1,4 +1,5 @@
-﻿using Quartz;
+﻿using Dumpify;
+using Quartz;
 
 namespace DotNet8WebApi.QuartzSample;
 
@@ -13,7 +14,9 @@ public class SampleBackgroundJob : IJob
 
     public Task Execute(IJobExecutionContext context)
     {
-        _logger.LogInformation("Hello world!");
+        string message = "Sample Job.";
+        message.Dump();
+
         return Task.CompletedTask;
     }
 }
